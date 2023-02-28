@@ -3,11 +3,17 @@ package frc.robot;
 import edu.wpi.first.math.util.Units;
 
 public class Constants {
+
     public static final int zero = 0; // in case you need a zero :)
+    public static final double onebillion = 1000000000; // in case you need a one billion :)
+
+
+  public static final class RobotMap {
     public static final int frontLeftMotorPort = 1;
     public static final int backLeftMotorPort = 2;
     public static final int frontRightMotorPort = 3;
     public static final int backRightMotorPort = 4;
+  }
 
   public static final class DriveConstants {
     public static final double kJoystickTurnDeadzone = 0.04;
@@ -22,6 +28,5 @@ public class Constants {
     public static final double fullRobotWidth = bumperlessRobotWidth + bumperThickness * 2;
     public static final double fullRobotLength = bumperlessRobotLength + bumperThickness * 2;
  }
-
     
 }

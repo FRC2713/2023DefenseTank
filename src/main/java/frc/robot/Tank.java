@@ -6,18 +6,29 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 
 public class Tank extends TimedRobot {
   public static final DriveSubsystem driveSubsystem = new DriveSubsystem();
   public static final XboxController driver = new XboxController(Constants.zero);
+  
+  
 
   @Override
   public void robotInit() {
+     driveSubsystem.setDefaultCommand(
+        new RunCommand(
+            () -> {
+              driveSubsystem.GTADrive(
+                  driver.getLeftTriggerAxis(), driver.getRightTriggerAxis(), driver.getLeftX());
+            },
+            driveSubsystem));
 
   }
   @Override
   public void robotPeriodic() {
-
+    CommandScheduler.getInstance().run();
   }
 
   @Override
@@ -32,7 +43,7 @@ public class Tank extends TimedRobot {
 
   @Override
   public void teleopInit() {
-
+    driveSubsystem.setHalfBrakeHalfCoast();
   }
 
   @Override
@@ -42,7 +53,7 @@ public class Tank extends TimedRobot {
 
   @Override
   public void disabledInit() {
-
+    driveSubsystem.setAllCoast();
   }
 
   @Override
@@ -52,13 +63,11 @@ public class Tank extends TimedRobot {
 
   @Override
   public void testInit() {
-
+    CommandScheduler.getInstance().cancelAll();
   }
 
   @Override
-  public void testPeriodic() {
-
-  }
+  public void testPeriodic() {}
 
   @Override
   public void simulationInit() {
