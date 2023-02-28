@@ -55,7 +55,7 @@ public class DriveSubsystem extends SubsystemBase{
     right1.getEncoder().setVelocityConversionFactor(Constants.DriveConstants.distPerPulse / 60);
     }
 
-     public void setHalfBrakeHalfCoast() {
+  public void setHalfBrakeHalfCoast() {
     left1.setIdleMode(IdleMode.kBrake);
     left2.setIdleMode(IdleMode.kCoast);
     right1.setIdleMode(IdleMode.kBrake);
@@ -69,27 +69,27 @@ public class DriveSubsystem extends SubsystemBase{
     right2.setIdleMode(IdleMode.kCoast);
   }
 
-  public RelativeEncoder getLeftEncoder() {
+  public RelativeEncoder getLeftEncoder() { //IO
     return left1.getEncoder();
   }
 
-  public RelativeEncoder getRightEncoder() {
+  public RelativeEncoder getRightEncoder() { //IO
     return right1.getEncoder();
   }
 
-  public double getHeading() {
+  public double getHeading() { //IO
     return Math.IEEEremainder(gyro.getAngle(), 360) * -1;
   }
 
-  public double getDegrees() {
+  public double getDegrees() { //IO
     return gyro.getRotation2d().getDegrees();
   }
 
-  public double getTurnRate() {
+  public double getTurnRate() { //IO
     return gyro.getRate();
   }
 
-  public Pose2d getPose() {
+  public Pose2d getPose() { //IO
     return roboOdometry.getPoseMeters();
   }
 

@@ -4,21 +4,20 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.TimedRobot;
+import org.littletonrobotics.junction.LoggedRobot;
+
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 
-public class Tank extends TimedRobot {
-  public static final CommandXboxController driver =
-          new CommandXboxController(/*Constants.RobotMap.DRIVER_PORT*/0);
+public class Tank extends LoggedRobot {
   public static final DriveSubsystem driveSubsystem = new DriveSubsystem();
-
+  public static final XboxController driver = new XboxController(Constants.zero);
+  
+  
 
   @Override
   public void robotInit() {
-    //Controls
      driveSubsystem.setDefaultCommand(
         new RunCommand(
             () -> {
