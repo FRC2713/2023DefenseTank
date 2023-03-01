@@ -5,19 +5,24 @@
 package frc.robot;
 
 import org.littletonrobotics.junction.LoggedRobot;
+import org.littletonrobotics.junction.Logger;
+import org.littletonrobotics.junction.networktables.NT4Publisher;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.RunCommand;
+import frc.robot.tankDriveIO.TankDriveIOSim;
+import frc.robot.tankDriveIO.TankDriveSubsystem;
 
 public class Tank extends LoggedRobot {
-  public static final DriveSubsystem driveSubsystem = new DriveSubsystem();
+  public static final TankDriveSubsystem driveSubsystem = new TankDriveSubsystem(new TankDriveIOSim());
   public static final XboxController driver = new XboxController(Constants.zero);
-  
-  
 
   @Override
   public void robotInit() {
+    Logger.getInstance().addDataReceiver(new NT4Publisher()); // Publish data to NetworkTables
+    Logger.getInstance().start(); // Start logging! No more data receivers, replay sources, or metadata values may be added.
+
      driveSubsystem.setDefaultCommand(
         new RunCommand(
             () -> {
@@ -44,7 +49,7 @@ public class Tank extends LoggedRobot {
 
   @Override
   public void teleopInit() {
-    driveSubsystem.setHalfBrakeHalfCoast();
+    // driveSubsystem.setHalfBrakeHalfCoast();
   }
 
   @Override
@@ -54,7 +59,7 @@ public class Tank extends LoggedRobot {
 
   @Override
   public void disabledInit() {
-    driveSubsystem.setAllCoast();
+    // driveSubsystem.setAllCoast();
   }
 
   @Override

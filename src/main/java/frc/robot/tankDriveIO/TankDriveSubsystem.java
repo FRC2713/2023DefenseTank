@@ -1,13 +1,12 @@
 package frc.robot.tankDriveIO;
 
-import com.revrobotics.RelativeEncoder;
+import org.littletonrobotics.junction.Logger;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -24,11 +23,11 @@ public class TankDriveSubsystem extends SubsystemBase {
         this.IO = IO;
     }
 
-      public double getHeading() { //IO
+      public double getHeading() { 
         return inputs.headingDegrees;
       }
     
-      public double getDegrees() { //IO
+      public double getDegrees() { 
         return inputs.degrees;
       }
     
@@ -61,22 +60,13 @@ public class TankDriveSubsystem extends SubsystemBase {
       @Override
       public void periodic() {
         // This method will be called once per scheduler run
+        IO.updateInputs(inputs);
         roboOdometry.update(
             Rotation2d.fromDegrees(getHeading()),
             inputs.leftEncoderDist,
             inputs.rightEncoderDist);
-    
-        SmartDashboard.putNumber("Left Enc", inputs.leftEncoderDist);
-        SmartDashboard.putNumber("Right Enc", inputs.rightEncoderDist);
-    
-        SmartDashboard.putNumber("Odo X", roboOdometry.getPoseMeters().getX());
-        SmartDashboard.putNumber("Odo Y", roboOdometry.getPoseMeters().getY());
-        SmartDashboard.putNumber("Odo H", roboOdometry.getPoseMeters().getRotation().getDegrees());
-    
-        SmartDashboard.putNumber("L1 Current", inputs.leftVoltage);
-        SmartDashboard.putNumber("L2 Current", inputs.leftVoltage);
-        SmartDashboard.putNumber("R1 Current", inputs.rightVoltage);
-        SmartDashboard.putNumber("R2 Current", inputs.rightVoltage);
+            Logger.getInstance().processInputs("tank", inputs);
+            Logger.getInstance().recordOutput("Odometry", new double[] {roboOdometry.getPoseMeters().getX(), roboOdometry.getPoseMeters().getY(), roboOdometry.getPoseMeters().getRotation().getDegrees()});
       }
     
       public void GTADrive(double leftTrigger, double rightTrigger, double turn) {
@@ -88,6 +78,6 @@ public class TankDriveSubsystem extends SubsystemBase {
         left = Math.min(1.0, Math.max(-1.0, left));
         right = Math.max(-1.0, Math.min(1.0, right));
     
-        IO.setVoltage(12, 12);
+        IO.setVoltage(left * 12, right * 12);
       }
 }

@@ -1,29 +1,30 @@
 package frc.robot.tankDriveIO;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel;
 
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
+import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim.KitbotGearing;
+import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim.KitbotMotor;
+import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim.KitbotWheelSize;
 import frc.robot.Constants;
 
 public class TankDriveIOSim implements TankDriveIO{
 
-    private static final DifferentialDrivetrainSim sim = new DifferentialDrivetrainSim(DCMotor.getNEO(4),
-    Constants.DriveConstants.gearRatio,
-    Constants.DriveConstants.jKGMetersSquared,
-    Constants.DriveConstants.robotMassKG,
-    Constants.DriveConstants.wheelDiameter/2,
-    Constants.DriveConstants.fullRobotWidth,
-    null);
+    private static final DifferentialDrivetrainSim sim = DifferentialDrivetrainSim.createKitbotSim(
+      KitbotMotor.kDualCIMPerSide, // 2 CIMs per side.
+      KitbotGearing.k10p71,        // 10.71:1
+      KitbotWheelSize.kSixInch,    // 6" diameter wheels.
+      null                         // No measurement noise.
+    );
 
     @Override
     public void updateInputs(TankInputs tank) {
       if (DriverStation.isDisabled()) {
             sim.setInputs(0, 0);
           }
+
+          sim.update(0.02);
         
         tank.leftEncoderDist = sim.getLeftPositionMeters();
         tank.rightEncoderDist = sim.getRightPositionMeters();

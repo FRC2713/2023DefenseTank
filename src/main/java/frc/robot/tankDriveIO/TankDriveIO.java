@@ -2,11 +2,6 @@ package frc.robot.tankDriveIO;
 
 import org.littletonrobotics.junction.AutoLog;
 
-import com.revrobotics.RelativeEncoder;
-
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-
 public interface TankDriveIO {
 
  @AutoLog
