@@ -1,10 +1,15 @@
 package frc.robot.tankDriveIO;
 import com.revrobotics.CANSparkMaxLowLevel;
 import com.revrobotics.CANSparkMax.IdleMode;
+
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+
 import com.revrobotics.CANSparkMax;
 import frc.robot.Constants;
 
 public class TankDriveIOSparks implements TankDriveIO{
+
+    ADXRS450_Gyro gyro = new ADXRS450_Gyro();
 
     private CANSparkMax left1 =
     new CANSparkMax(
@@ -59,8 +64,9 @@ private CANSparkMax right2 =
 
     @Override
     public void updateInputs(TankInputs tank) {       
-        tank.leftEncoder = left1.getEncoder();
-        tank.rightEncoder = right1.getEncoder();
+        tank.leftEncoderDist = left1.getEncoder().getPosition();
+        tank.rightEncoderDist = left1.getEncoder().getPosition();
+        tank.headingDegrees = gyro.getRotation2d().getDegrees();
         tank.degrees = left1.getEncoder().getPosition();
         tank.rightVoltage = right1.getOutputCurrent();
         tank.leftVoltage = left1.getOutputCurrent();
@@ -68,9 +74,6 @@ private CANSparkMax right2 =
 
     @Override
     public void setVoltage(double voltsLeft, double voltsRight) {
-
-        //need to add pose/heading
-
         left1.setVoltage(voltsLeft);  
         left2.setVoltage(voltsLeft);      
         right1.setVoltage(voltsRight);

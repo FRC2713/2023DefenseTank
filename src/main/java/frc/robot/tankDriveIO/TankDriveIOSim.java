@@ -24,12 +24,12 @@ public class TankDriveIOSim implements TankDriveIO{
       if (DriverStation.isDisabled()) {
             sim.setInputs(0, 0);
           }
-        tank.leftEncoder = null;
-        tank.rightEncoder = null;
+        
+        tank.leftEncoderDist = sim.getLeftPositionMeters();
+        tank.rightEncoderDist = sim.getRightPositionMeters();
         tank.degrees = 0;
-        tank.heading = sim.getHeading();
+        tank.headingDegrees = sim.getHeading().getDegrees();
         tank.turnRate = 0;
-        tank.pose = sim.getPose();
         tank.leftVoltage = sim.getCurrentDrawAmps();
         tank.rightVoltage = sim.getCurrentDrawAmps();
         tank.leftSpeed = sim.getLeftVelocityMetersPerSecond();
