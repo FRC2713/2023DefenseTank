@@ -9,7 +9,7 @@ public class Constants {
 
 
   public static final class RobotMap {
-    public static final int frontLeftMotorPort = 2;
+    public static final int frontLeftMotorPort = 4;
     public static final int backLeftMotorPort = 3;
     public static final int frontRightMotorPort = 6;
     public static final int backRightMotorPort = 7;
