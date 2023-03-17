@@ -65,7 +65,7 @@ private CANSparkMax right2 =
     @Override
     public void updateInputs(TankInputs tank) {       
         tank.leftEncoderDist = left1.getEncoder().getPosition();
-        tank.rightEncoderDist = left1.getEncoder().getPosition();
+        tank.rightEncoderDist = right1.getEncoder().getPosition();
         tank.headingDegrees = gyro.getRotation2d().getDegrees();
         tank.degrees = left1.getEncoder().getPosition();
         tank.rightVoltage = right1.getOutputCurrent();
@@ -75,9 +75,7 @@ private CANSparkMax right2 =
     @Override
     public void setVoltage(double voltsLeft, double voltsRight) {
         left1.setVoltage(voltsLeft);  
-        left2.setVoltage(voltsLeft);      
         right1.setVoltage(voltsRight);
-        right2.setVoltage(voltsRight);        
     }
 
 }
