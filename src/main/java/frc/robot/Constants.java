@@ -13,6 +13,9 @@ public class Constants {
     public static final int backLeftMotorPort = 3;
     public static final int frontRightMotorPort = 6;
     public static final int backRightMotorPort = 7;
+
+    //placeholder
+    public static final int lightsPort = 0;
   }
 
   public static final class DriveConstants {
@@ -30,6 +33,9 @@ public class Constants {
     private static final double bumperThickness = Units.inchesToMeters(3);
     public static final double fullRobotWidth = bumperlessRobotWidth + bumperThickness * 2;
     public static final double fullRobotLength = bumperlessRobotLength + bumperThickness * 2;
+ }
+ public static final class LightConstants{
+    public static final int stripLength = 20;
  }
     
 }

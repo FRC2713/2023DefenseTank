@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import frc.robot.tankDriveIO.TankDriveIOSparks;
 import org.littletonrobotics.junction.LoggedRobot;
 import org.littletonrobotics.junction.Logger;
@@ -14,12 +12,12 @@ import org.littletonrobotics.junction.networktables.NT4Publisher;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.RunCommand;
-import frc.robot.tankDriveIO.TankDriveIOSim;
 import frc.robot.tankDriveIO.TankDriveSubsystem;
 
 public class Tank extends LoggedRobot {
   public static final TankDriveSubsystem driveSubsystem = new TankDriveSubsystem(new TankDriveIOSparks());
   //manualy switch for sim or robo guy
+
   public static final XboxController driver = new XboxController(Constants.zero);
 
   @Override
