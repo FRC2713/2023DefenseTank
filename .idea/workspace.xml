@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fd6053f-debf-4aee-952e-4b74b0dc4f9c" name="Changes" comment="very basic LED code with temp values">
-      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/util/Patterns.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/Lights.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/Lights.java" afterDir="false" />
-    </list>
+    <list default="true" id="5fd6053f-debf-4aee-952e-4b74b0dc4f9c" name="Changes" comment="I write light code but idk if it works or Im insane" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -248,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680111667018</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="I write light code but idk if it works or Im insane">
+      <created>1680567475423</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1680567475423</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -271,7 +273,8 @@
     <MESSAGE value="changed spark ports" />
     <MESSAGE value="works now" />
     <MESSAGE value="very basic LED code with temp values" />
-    <option name="LAST_COMMIT_MESSAGE" value="very basic LED code with temp values" />
+    <MESSAGE value="I write light code but idk if it works or Im insane" />
+    <option name="LAST_COMMIT_MESSAGE" value="I write light code but idk if it works or Im insane" />
   </component>
   <component name="WpiLibVersionService">
     <option name="lastChecked" value="20230401101241" />

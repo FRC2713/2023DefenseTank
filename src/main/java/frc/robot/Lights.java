@@ -14,7 +14,7 @@ import static frc.robot.Constants.LightConstants.stripLength;
 public class Lights extends SubsystemBase {
 
     public static Lights instance;
-    public static Color[] prideSlide = {Color.kBlack, Color.kRed, Color.kDarkOrange, Color.kYellow, Color.kGreen, Color.kBlue, Color.kPurple, Color.kBlack, Color.kSkyBlue, Color.kLightPink, Color.kWhite, Color.kLightPink, Color.kLightBlue};
+    public static final Color[] prideSlide = {Color.kBlack, Color.kRed, Color.kDarkOrange, Color.kYellow, Color.kGreen, Color.kBlue, Color.kPurple, Color.kBlack, Color.kSkyBlue, Color.kLightPink, Color.kWhite, Color.kLightPink, Color.kLightBlue};
     public static Lights getInstance(){
         if(instance == null){
             instance = new Lights();
