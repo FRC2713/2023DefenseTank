@@ -36,6 +36,7 @@ public class Constants {
  }
  public static final class LightConstants{
     public static final int stripLength = 20;
+    public static final double breathDuration = 10;
  }
     
 }
